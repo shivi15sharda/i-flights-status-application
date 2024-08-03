@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const GET_FLIGHT_STATUS_URL = `/api/flights/`;
+const BASE_URL = 'https://hackuser15-i-flights-status-application-440c-app-url.apps.arolab37nonprod.goindigo.in/';
+const GET_FLIGHT_STATUS_URL = BASE_URL + `/api/flights/`;
 
 const FlightUpdates = ({ flightNumber }) => {
     const [res, setStatus] = useState(null);

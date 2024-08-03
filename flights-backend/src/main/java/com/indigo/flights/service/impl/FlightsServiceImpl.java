@@ -19,6 +19,7 @@ public class FlightsServiceImpl implements IFlightsService {
     @Override
     public FlightStatusResponse getFlightStatus(String flightNumber) {
         log.info("Fetching current flight status...");
+        System.out.println("fetching current flight status");
         FlightDetail dbResponse = flightsRepository.findById(flightNumber).orElse(null);
         return (dbResponse != null) ? FlightStatusResponse.builder()
                 .flightStatus(dbResponse.getStatus())
@@ -28,12 +29,39 @@ public class FlightsServiceImpl implements IFlightsService {
                 .build() : null;
     }
 
-    public void updateFlightStatus(FlightDetail flightDetail) {
-        log.info("Uploading flight status...");
+    // @Override // --- v1 code --
+    // public void updateFlightStatus(FlightDetail flightDetail) {
+    //     log.info("Uploading flight status...");
+    //     try {
+    //         flightsRepository.save(flightDetail);
+    //     } catch(Exception exception) {
+    //         log.error("Unable to upload flight detail", exception);
+    //     }
+    // }
+
+    @Override
+    public String addFlightData(FlightDetail data) {
+        String dbStatus = "Failure";
         try {
-            flightsRepository.save(flightDetail);
+            log.info("Adding new flight status");
+            flightsRepository.save(data);
+            dbStatus = "Success";
         } catch(Exception exception) {
-            log.error("Unable to upload flight detail", exception);
+            log.error("Error adding flight data");
         }
+        return dbStatus;
+    }
+
+    @Override
+    public String updateFlightData(FlightDetail data) {
+        String dbStatus = "Failure";
+        try {
+            log.info("Updating flight status");
+            flightsRepository.save(data);
+            dbStatus = "Success";
+        } catch(Exception exception) {
+            log.error("Error updating flight data");
+        }
+        return dbStatus;
     }
 }

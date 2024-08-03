@@ -10,4 +10,7 @@ public interface RestURIConstants {
     String CHECK_FLIGHT_STATUS = "/status" + FLIGHT_NUMBER_PLACEHOLDER;
     String UPDATE_FLIGHT_STATUS = "/status" + FLIGHT_NUMBER_PLACEHOLDER;
     String LIST_ALL_FLIGHTS = "/all";
+
+    String ADD_FLIGHT_DATA = "/add";
+    String UPDATE_FLIGHT_DATA = "/update";
 }

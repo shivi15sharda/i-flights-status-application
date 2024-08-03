@@ -7,8 +7,13 @@ import org.springframework.stereotype.Service;
 
 public interface IFlightsService {
 
+    //frontend APIs
     FlightStatusResponse getFlightStatus(String flightNumber);
 
-    void updateFlightStatus(FlightDetail flightDetail);
+
+    //admin functions
+    String addFlightData(FlightDetail data);
+
+    String updateFlightData(FlightDetail data);
 
 }

@@ -13,12 +13,17 @@ import static com.indigo.flights.constants.RestURIConstants.HEALTH;
 
 @RestController
 @Slf4j
-@RequestMapping(BASE_URI)
 public class HealthController {
 
-    @GetMapping(value = HEALTH, produces = APPLICATION_JSON)
+    @GetMapping(value = BASE_URI+HEALTH, produces = APPLICATION_JSON)
     ResponseEntity<?> checkHealth() {
         log.info("Returning system health");
         return ResponseEntity.ok("All ok!");
+    }
+
+    @GetMapping(value = "/", produces = APPLICATION_JSON)
+    ResponseEntity<?> checkHealthV1() {
+        log.info("index page");
+        return ResponseEntity.ok("Welcome to Indigo 6E");
     }
 }
