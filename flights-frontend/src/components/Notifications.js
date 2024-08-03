@@ -10,6 +10,7 @@ const Notification = () => {
         const x_notifications = () => {
             setNotifications((prevNotifications) => [
                 ...prevNotifications,
+                //can use axios to fetch status from db
                 { id: Date.now(), message: 'Flight delayed by X minutes' },
             ]);
         };

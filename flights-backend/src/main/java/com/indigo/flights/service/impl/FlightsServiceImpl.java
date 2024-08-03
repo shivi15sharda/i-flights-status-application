@@ -21,6 +21,7 @@ public class FlightsServiceImpl implements IFlightsService {
         log.info("Fetching current flight status...");
         System.out.println("fetching current flight status");
         FlightDetail dbResponse = flightsRepository.findById(flightNumber).orElse(null);
+        log.info("DB response: {}", dbResponse);
         return (dbResponse != null) ? FlightStatusResponse.builder()
                 .flightStatus(dbResponse.getStatus())
                 .flightNumber(dbResponse.getFlightNumber())
